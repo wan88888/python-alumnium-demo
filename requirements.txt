@@ -1,0 +1,5 @@
+alumnium
+pytest
+pytest-playwright
+python-dotenv
+pytest-html
