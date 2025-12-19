@@ -1,7 +1,6 @@
 import os
 from dotenv import load_dotenv
 
-# 必须在 import alumnium 之前加载 .env，因为 alumnium 在导入时就读取环境变量
 load_dotenv()
 
 from alumnium import Alumni
@@ -12,13 +11,11 @@ from pytest import fixture
 SAUCEDEMO_USERNAME = os.getenv("SAUCEDEMO_USERNAME")
 SAUCEDEMO_PASSWORD = os.getenv("SAUCEDEMO_PASSWORD")
 
-
 @fixture
 def al(page: Page):
     al = Alumni(page)
     yield al
     al.quit()
-
 
 def test_login_success(al: Alumni, page: Page):
     page.goto("https://www.saucedemo.com")

@@ -183,4 +183,3 @@ price = al.get("商品价格")
 ## 许可证
 
 MIT License
-

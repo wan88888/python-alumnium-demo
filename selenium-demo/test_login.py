@@ -1,7 +1,6 @@
 import os
 from dotenv import load_dotenv
 
-# 必须在 import alumnium 之前加载 .env，因为 alumnium 在导入时就读取环境变量
 load_dotenv()
 
 from alumnium import Alumni
@@ -12,20 +11,17 @@ from pytest import fixture
 SAUCEDEMO_USERNAME = os.getenv("SAUCEDEMO_USERNAME")
 SAUCEDEMO_PASSWORD = os.getenv("SAUCEDEMO_PASSWORD")
 
-
 @fixture
 def driver():
     driver = Chrome()
     yield driver
     driver.quit()
 
-
 @fixture
 def al(driver: Chrome):
     al = Alumni(driver)
     yield al
     al.quit()
-
 
 def test_login_success(al: Alumni, driver: Chrome):
     driver.get("https://www.saucedemo.com")
